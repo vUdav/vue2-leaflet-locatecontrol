@@ -4,7 +4,7 @@
   "description": "locatecontrol plugin extension for vue2-leaflet package",
   "main": "dist/Vue2LeafletLocatecontrol.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "vue build Vue2LeafletLocatecontrol.vue --prod --lib --config build.config.js"
   },
   "repository": {
     "type": "git",

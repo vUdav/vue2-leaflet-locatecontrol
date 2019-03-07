@@ -45,6 +45,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import "~leaflet.locatecontrol/src/L.Control.Locate.scss";
+<style>
+@import "~leaflet.locatecontrol/dist/L.Control.Locate.css";
 </style>
