@@ -22,6 +22,8 @@ const props = {
 }
 
 export default {
+  name: "Vue2LeafletLocatecontrol",
+
   props: props,
 
   data() {
