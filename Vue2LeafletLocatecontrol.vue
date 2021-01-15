@@ -33,7 +33,7 @@ export default {
   },
 
   beforeDestroy() {
-    this.parentContainer.removeLayer(this);
+    this.$parent.mapObject.removeControl(this.mapObject);
   },
 
   mounted() {
@@ -42,7 +42,9 @@ export default {
     propsBinder(this, this.mapObject, props);
     this.ready = true;
     this.parentContainer = findRealParent(this.$parent);
-    this.mapObject.addTo(this.parentContainer.mapObject, !this.visible);
+    if (this.$parent._isMounted) {
+      this.$parent.mapObject.addControl(this.mapObject);
+    }
   }
 }
 </script>
