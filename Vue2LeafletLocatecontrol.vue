@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import L, { DomEvent } from 'leaflet';
+import { DomEvent } from 'leaflet';
 import { findRealParent, propsBinder } from 'vue2-leaflet';
-import "leaflet.locatecontrol";
+import Locatecontrol from "leaflet.locatecontrol";
 
 const props = {
   options: {
@@ -24,7 +24,7 @@ const props = {
 export default {
   name: "Vue2LeafletLocatecontrol",
 
-  props: props,
+  props,
 
   data() {
     return {
@@ -37,12 +37,16 @@ export default {
   },
 
   mounted() {
-    this.mapObject = L.control.locate(this.options);
+    this.mapObject = new Locatecontrol(this.options);
     DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.ready = true;
     this.parentContainer = findRealParent(this.$parent);
     this.mapObject.addTo(this.parentContainer.mapObject, !this.visible);
+
+    this.$nextTick(() => {
+      this.$emit('ready', this.mapObject);
+    });
   }
 }
 </script>
